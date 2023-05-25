@@ -2,6 +2,7 @@ var app = new Vue({
     el: '#app',
     data () {
         return {
+            repository: 'godotengine/godot',
             i: 0,
             response: null,
             language: null,
@@ -25,13 +26,13 @@ var app = new Vue({
                 if (this.language) {
                     var params = {
                         params: {
-                          q: 'is:issue is:open language:'+this.language,
+                          q: 'is:issue is:open repo:' + this.repository + (this.language ? ' language:' + this.language : '')
                         }
                     };
                 } else {
                     var params = {
                         params: {
-                          q: 'is:issue is:open'
+                          q: 'is:issue is:open repo:' + this.repository
                         }
                     };
                 }
